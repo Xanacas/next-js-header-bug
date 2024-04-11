@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
             headers: headers,
         },
     });
-    res.headers.append('add-to-response', 'not working on vercel but in dev');
+    res.headers.append('add-to-response', 'this only works in dev mode');
 
     return res;
 }

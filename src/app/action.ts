@@ -7,7 +7,7 @@ export default async function serverAction(formData?: FormData) {
     const setHeader = headers().get('set-header');
 
     // this header is not available as it is set in middleware to the response object
-    const addToReponse = headers().get('add-to-response');
+    const addToReponse = headers().get('add-to-response') ?? 'this does not work on vercel';
 
     console.log('serverAction->access header: ', { setHeader, addToReponse });
 }
