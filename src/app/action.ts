@@ -3,12 +3,11 @@
 import { headers } from 'next/headers';
 
 export default async function serverAction(formData?: FormData) {
-    const formDataUserId = formData?.get('userId');
+    // this header is always available
+    const setHeader = headers().get('set-header');
 
-    console.log('serverAction');
+    // this header is not available as it is set in middleware to the response object
+    const addToReponse = headers().get('add-to-response');
 
-    const userId = headers().get('userId');
-    const userIdx = headers().get('x-user-id');
-    console.log('serverAction->userId', { userId, userIdx });
-    return 'This is text';
+    console.log('serverAction->access header: ', { setHeader, addToReponse });
 }

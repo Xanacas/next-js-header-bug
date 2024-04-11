@@ -1,16 +1,15 @@
 import { NextResponse, NextRequest } from 'next/server';
 
 export function middleware(req: NextRequest) {
-    console.log('middle ware executed for: ', req.nextUrl.pathname);
     const headers = new Headers(req.headers);
-    headers.set('userId', '12345');
+    headers.set('set-header', 'this always works');
     const res = NextResponse.next({
         request: {
             headers: headers,
         },
     });
-    res.headers.append('x-user-id', 'test' as string);
-    console.log('middleware executed, userId set');
+    res.headers.append('add-to-response', 'not working on vercel but in dev');
+
     return res;
 }
 export const config = {
